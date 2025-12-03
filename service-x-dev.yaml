@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: service-x
+  datasource: # TODO: Hide it later
+    password: password
+    url: jdbc:postgresql://localhost:5432/booking_db?stringtype=unspecified
+    username: booking
+  liquibase:
+    changeLog: classpath:db/changelog/changelog-master.yaml
+    enabled: false
+server:
+  port: 8081
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8071/eureka
