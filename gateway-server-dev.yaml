@@ -60,7 +60,7 @@ resilience4j:
 
 eureka:
   client:
-    serviceUrl:
+    service-url:
       defaultZone: http://${EUREKA_HOST:localhost}:8071/eureka
 
 springdoc:
