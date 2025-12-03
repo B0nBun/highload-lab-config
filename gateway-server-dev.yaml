@@ -62,6 +62,8 @@ eureka:
   client:
     service-url:
       defaultZone: http://${EUREKA_HOST:localhost}:8071/eureka
+      register-with-eureka: true
+      fetch-registry: true
 
 springdoc:
   swagger-ui:
