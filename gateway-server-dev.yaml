@@ -58,6 +58,11 @@ resilience4j:
       serviceYCB:
         baseConfig: default
 
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://${EUREKA_HOST:localhost}:8071/eureka
+
 springdoc:
   swagger-ui:
     path: /swagger-ui
