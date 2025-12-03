@@ -3,7 +3,7 @@ spring:
     name: service-y
   datasource: # TODO: Hide it later
     password: password
-    url: jdbc:postgresql://localhost:5432/booking_db?stringtype=unspecified
+    url: jdbc:postgresql://${DB_HOST:localhost}:5432/booking_db?stringtype=unspecified
     username: booking
   liquibase:
     changeLog: classpath:db/changelog/changelog-master.yaml
@@ -13,4 +13,4 @@ server:
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://localhost:8071/eureka
+      defaultZone: http://${EUREKA_HOST:localhost}:8071/eureka
