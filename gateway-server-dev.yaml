@@ -1,0 +1,70 @@
+server:
+  port: 8073
+
+spring:
+  application:
+    name: gateway-server
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+          lower-case-service-id: true
+      routes:
+        - id: service-x
+          uri: lb://service-x
+          predicates:
+            - Path=/service-x/**
+          filters:
+            - name: CircuitBreaker
+              args:
+                name: serviceXCB
+                fallbackUri: forward:/fallback/service-x
+        - id: service-y
+          uri: lb://service-y
+          predicates:
+            - Path=/service-y/**
+          filters:
+            - name: CircuitBreaker
+              args:
+                name: serviceYCB
+                fallbackUri: forward:/fallback/service-y
+
+resilience4j:
+  circuitbreaker:
+    configs:
+      default:
+        registerHealthIndicator: true
+        slidingWindowType: COUNT_BASED
+        slidingWindowSize: 20
+        failureRateThreshold: 50
+        waitDurationInOpenState: 10s
+        permittedNumberOfCallsInHalfOpenState: 5
+        minimumNumberOfCalls: 10
+        automaticTransitionFromOpenToHalfOpenEnabled: true
+    instances:
+      serviceXCB:
+        baseConfig: default
+      serviceYCB:
+        baseConfig: default
+  timelimiter:
+    configs:
+      default:
+        timeoutDuration: 3s
+        cancelRunningFuture: true
+    instances:
+      serviceXCB:
+        baseConfig: default
+      serviceYCB:
+        baseConfig: default
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui
+    urls:
+      - name: service-x
+        url: /service-x/api-docs
+      - name: service-y
+        url: /service-y/api-docs
+  api-docs:
+    enabled: true
