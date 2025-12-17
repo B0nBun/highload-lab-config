@@ -71,9 +71,13 @@ springdoc:
   swagger-ui:
     path: /swagger-ui
     urls:
-      - name: service-x
-        url: /service-x/api-docs
-      - name: service-y
-        url: /service-y/api-docs
+      - name: gateway
+        url: /api-docs
+      - name: user-service
+        url: /user-service/api-docs
+      - name: office-service
+        url: /office-service/api-docs
+      - name: booking-service
+        url: /booking-service/api-docs
   api-docs:
     enabled: true
