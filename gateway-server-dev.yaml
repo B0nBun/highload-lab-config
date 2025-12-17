@@ -70,9 +70,8 @@ eureka:
 springdoc:
   swagger-ui:
     path: /swagger-ui
+    config-url: /api-docs/swagger-config
     urls:
-      - name: gateway
-        url: /api-docs
       - name: user-service
         url: /user-service/api-docs
       - name: office-service
