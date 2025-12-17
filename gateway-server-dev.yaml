@@ -52,9 +52,11 @@ resilience4j:
         minimumNumberOfCalls: 10
         automaticTransitionFromOpenToHalfOpenEnabled: true
     instances:
-      serviceXCB:
+      userServiceCB:
         baseConfig: default
-      serviceYCB:
+      officeServiceCB:
+        baseConfig: default
+      bookingServiceCB:
         baseConfig: default
   timelimiter:
     configs:
@@ -62,9 +64,11 @@ resilience4j:
         timeoutDuration: 3s
         cancelRunningFuture: true
     instances:
-      serviceXCB:
+      userServiceCB:
         baseConfig: default
-      serviceYCB:
+      officeServiceCB:
+        baseConfig: default
+      bookingServiceCB:
         baseConfig: default
 
 eureka:
