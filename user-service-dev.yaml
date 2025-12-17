@@ -1,9 +1,9 @@
 server:
-  port: 8082
+  port: 8083
 
 spring:
   application:
-    name: service-y
+    name: user-service
   datasource:
     password: ${DB_PASSWORD}
     url: jdbc:postgresql://${DB_HOST:localhost}:5432/${DB_DATABASE}?stringtype=unspecified
