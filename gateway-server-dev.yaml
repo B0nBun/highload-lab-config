@@ -11,24 +11,33 @@ spring:
           enabled: true
           lower-case-service-id: true
       routes:
-        - id: service-x
-          uri: lb://service-x
+        - id: user-service
+          uri: lb://user-service
           predicates:
-            - Path=/service-x/**
+            - Path=/user-service/**
           filters:
             - name: CircuitBreaker
               args:
-                name: serviceXCB
-                fallbackUri: forward:/fallback/service-x
-        - id: service-y
-          uri: lb://service-y
+                name: userServiceCB
+                fallbackUri: forward:/fallback/user-service
+        - id: booking-service
+          uri: lb://booking-service
           predicates:
-            - Path=/service-y/**
+            - Path=/booking-service/**
           filters:
             - name: CircuitBreaker
               args:
-                name: serviceYCB
-                fallbackUri: forward:/fallback/service-y
+                name: bookingServiceCB
+                fallbackUri: forward:/fallback/booking-service
+        - id: user-office
+          uri: lb://office-service
+          predicates:
+            - Path=/office-service/**
+          filters:
+            - name: CircuitBreaker
+              args:
+                name: officeServiceCB
+                fallbackUri: forward:/fallback/office-service
 
 resilience4j:
   circuitbreaker:
