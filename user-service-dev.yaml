@@ -17,6 +17,12 @@ spring:
       ddl-auto: validate
   jackson:
     property-naming-strategy: SNAKE_CASE
+  mvc:
+    problemdetails:
+      enabled: true
+  webflux:
+    problemdetails:
+      enabled: true
 
 eureka:
   client:
