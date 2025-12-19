@@ -4,6 +4,11 @@ server:
 spring:
   application:
     name: booking-service
+  r2dbc:
+    password: ${DB_PASSWORD}
+    url: r2dbc:postgresql://${DB_HOST:localhost}:5432/${DB_BOOKING_DATABASE}?stringtype=unspecified
+    username: ${DB_USERNAME}
+    driver-class-name: org.postgresql.Driver
   datasource:
     password: ${DB_PASSWORD}
     url: jdbc:postgresql://${DB_HOST:localhost}:5432/${DB_BOOKING_DATABASE}?stringtype=unspecified
@@ -12,6 +17,10 @@ spring:
   liquibase:
     changeLog: classpath:db/changelog/changelog-master.yaml
     enabled: true
+    password: ${DB_PASSWORD}
+    url: jdbc:postgresql://${DB_HOST:localhost}:5432/${DB_BOOKING_DATABASE}?stringtype=unspecified
+    username: ${DB_USERNAME}
+    driver-class-name: org.postgresql.Driver
   jpa:
     hibernate:
       ddl-auto: validate
