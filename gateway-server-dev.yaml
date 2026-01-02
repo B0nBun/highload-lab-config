@@ -91,5 +91,8 @@ springdoc:
         url: /office-service/api-docs
       - name: booking-service
         url: /booking-service/api-docs
+      - name: gateway-server
+        url: /api-docs
   api-docs:
+    path: /api-docs
     enabled: true
