@@ -6,6 +6,14 @@ spring:
     web-application-type: reactive
   application:
     name: gateway-server
+  mvc:
+    problemdetails:
+      enabled: true
+  webflux:
+    problemdetails:
+      enabled: true
+  jackson:
+    property-naming-strategy: SNAKE_CASE
   cloud:
     gateway:
       discovery:
